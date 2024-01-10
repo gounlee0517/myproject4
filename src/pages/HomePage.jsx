@@ -1,10 +1,12 @@
 import React from 'react';
-import Header from '../components/Header';
+import Slide from '../components/Slide';
+import HotItems from '../components/HotItems';
 
 function HomePage() {
     return (
         <div>
-            <Header />
+            <Slide />
+            <HotItems />
         </div>
     );
 }

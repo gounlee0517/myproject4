@@ -30,6 +30,7 @@ ol, ul {
 }
 li {
 	margin-right: 5px;
+	margin-left: 5px;
 	cursor: pointer;
 }
 blockquote, q {
