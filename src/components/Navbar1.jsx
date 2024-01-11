@@ -47,14 +47,17 @@ function Navbar1() {
 }
 
 const StNav = styled.nav`
+    width: 100%;
     padding: 3px;
     margin: 0 auto;
     display: flex;
-    position: sticky;
-    top: 0;
+    position: fixed;
+    z-index: 1;
     justify-content: space-between;
     font-size: 12px;
     color: #6a6a6a;
+    background-color: white;
+    opacity: 0.95;
 
     border-bottom: 1px solid #f4f4f4;
 `;

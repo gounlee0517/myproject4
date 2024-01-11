@@ -22,12 +22,14 @@ function Navbar2() {
     );
 }
 const StNav = styled.nav`
+    width: 100%;
     padding: 13px;
     position: sticky;
-    top: 0;
     justify-content: space-between;
     font-size: 13px;
     color: #6a6a6a;
+    background-color: white;
+    opacity: 0.95;
 
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;

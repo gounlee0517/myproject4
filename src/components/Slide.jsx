@@ -12,6 +12,10 @@ function Slide() {
         return () => clearInterval(timer);
     }, []);
 
+    const handleButtonClick = (index) => {
+        setTimeSlide(index);
+    };
+
     return (
         <>
             <StOverflowDiv>
@@ -31,12 +35,20 @@ function Slide() {
                         <img src='img/health.avif' alt='health' />
                     </StSlide>
                 </StSlideContainer>
-                <div>
-                    <button>비타민</button>
-                    <button>온 가족 건강</button>
-                    <button>스포츠</button>
-                    <button>건강</button>
-                </div>
+                <StButtonDiv>
+                    <StButton onClick={() => handleButtonClick(0)}>
+                        비타민
+                    </StButton>
+                    <StButton onClick={() => handleButtonClick(1)}>
+                        온 가족 건강
+                    </StButton>
+                    <StButton onClick={() => handleButtonClick(2)}>
+                        스포츠
+                    </StButton>
+                    <StButton onClick={() => handleButtonClick(3)}>
+                        건강
+                    </StButton>
+                </StButtonDiv>
             </StOverflowDiv>
         </>
     );
@@ -61,6 +73,24 @@ const StSlide = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+`;
+const StButtonDiv = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -170%);
+`;
+const StButton = styled.button`
+    border-style: none;
+    margin-right: 10px;
+    padding: 6px 22px;
+    background-color: white;
+    opacity: 0.8;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+        font-weight: bold;
     }
 `;
 
