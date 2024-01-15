@@ -1,46 +1,127 @@
 {
-    "item1": [
+    "hotItems": [
         {
             "name": "비타민C 로즈힙 캡슐형",
             "detail": "요즘같은 시기에 가장 필요한 영양제",
-            "price": "25,400원",
-            "delivery": "택배",
-            "delivery-price": "2,500원",
-            "item-img": "",
+            "url": "./public/img/items/vitaminC-rose-hips.webp",
             "id": "1"
-        }
-    ],
-    "item2": [
+        },
         {
             "name": "비타민C 파우더",
             "detail": "100% 비타민C 파우더",
-            "price": "23,100원",
-            "delivery": "택배",
-            "delivery-price": "2,500원",
-            "item-img": "",
+            "url": "",
             "id": "2"
-        }
-    ],
-    "item3": [
+        },
         {
             "name": "레스베라트롤 120",
             "detail": "강력한 항산화로 면역력 UP!",
-            "price": "27,900원",
-            "delivery": "택배",
-            "delivery-price": "2,500원",
-            "item-img": "",
+            "url": "",
             "id": "3"
-        }
-    ],
-    "item4": [
+        },
         {
             "name": "타우린 400",
             "detail": "대용량 캡슐로 매일매일 간편하게!",
-            "price": "30,900원",
-            "delivery": "택배",
-            "delivery-price": "2,500원",
-            "item-img": "",
+            "url": "",
             "id": "4"
         }
-    ]
+    ],
+    "items": [
+        {
+            "name": "비타민C 로즈힙 캡슐형",
+            "price": "25,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "./public/img/items/vitaminC-rose-hips.webp",
+            "id": "1"
+        },
+        {
+            "name": "비타민C 파우더",
+            "price": "23,100원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "2"
+        },
+        {
+            "name": "레스베라트롤 120",
+            "price": "27,900원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "3"
+        },
+        {
+            "name": "타우린 400",
+            "price": "30,900원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "4"
+        },
+        {
+            "name": "글루타치온",
+            "price": "65,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "5"
+        },
+        {
+            "name": "카페인",
+            "price": "22,300원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "6"
+        },
+        {
+            "name": "알파리포산",
+            "price": "38,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "7"
+        },
+        {
+            "name": "프테로스틸벤",
+            "price": "26,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "8"
+        },
+        {
+            "name": "프로틴 아이솔레이트 파우더 5파운드 초콜렛 피넛버터",
+            "price": "137,300원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "9"
+        },
+        {
+            "name": "뉴트리코스트 BCAA 60회분 그린 애플맛",
+            "price": "45,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "10"
+        },
+        {
+            "name": "실리엄 허스크 500캡슐",
+            "price": "29,500원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "11"
+        },
+        {
+            "name": "오가닉 동충하초 분말",
+            "price": "40,400원",
+            "delivery": "택배",
+            "deliveryPrice": "2,500원",
+            "url": "",
+            "id": "12"
+        }
+    ],
+    "reviews": [{}]
 }

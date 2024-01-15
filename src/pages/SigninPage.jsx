@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import KakaoLogin from 'react-kakao-login';
 
 function SigninPage() {
     const [email, setEmail] = useState('');
@@ -56,14 +57,13 @@ function SigninPage() {
         const authInstance = getAuth();
 
         try {
-            // 사용자에게 팝업 창을 통해 Facebook으로 로그인하도록 합니다.
+            // 사용자에게 팝업 창을 통해 Facebook으로 로그인
             const result = await signInWithPopup(authInstance, provider);
             navigate('/');
-            // Facebook 로그인 성공 후, Firebase에 리다이렉트하여 추가 확인을 합니다.
+            // Facebook 로그인 성공 후, Firebase에 리다이렉트하여 추가 확인
             await signInWithRedirect(authInstance, provider);
             const redirectResult = await getRedirectResult(authInstance);
 
-            // 나머지 로직
             if (redirectResult.credential) {
                 const credential =
                     FacebookAuthProvider.credentialFromResult(redirectResult);
@@ -73,11 +73,15 @@ function SigninPage() {
             console.error(error);
         }
     };
-    // //회원가입
-    // const signUp = async (e) => {
-    //     e.preventDefault();
-    //     createUserWithEmailAndPassword(auth, email, password);
-    // };
+
+    const kakaoClientId = 'c4af41ece2bef5ccf0a906c645c0c0f8';
+    const kakaoOnSuccess = async (data) => {
+        console.log(data);
+        const idToken = data.response.access_token;
+    };
+    const kakaoOnFailure = (error) => {
+        console.log(error);
+    };
 
     return (
         <div>
@@ -101,6 +105,11 @@ function SigninPage() {
                 />
                 <button onClick={signIn}>로그인</button>
                 <button onClick={FacebookSignIn}>페이스북 로그인</button>
+                <KakaoLogin
+                    token={kakaoClientId}
+                    onSuccess={kakaoOnSuccess}
+                    onFail={kakaoOnFailure}
+                />
             </div>
 
             <div>

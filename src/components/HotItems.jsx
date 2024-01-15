@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function HotItems() {
+    const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
+
+    const getPosts = () => {
+        axios.get('http://localhost:3001/hotItems').then((res) => {
+            setPosts(res.data);
+        });
+    };
+    useEffect(() => {
+        getPosts();
+    }, []);
+
     return (
         <>
             <StContainer>
                 <div>
                     <h2>WEEKLY HOTITEMS</h2>
                 </div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                {posts.map((post) => {
+                    return (
+                        <div
+                            key={post.id}
+                            onClick={() => navigate('/detail/:id')}
+                        >
+                            <h3>{post.name}</h3>
+                            <p>{post.detail}</p>
+                        </div>
+                    );
+                })}
             </StContainer>
         </>
     );
@@ -31,7 +52,6 @@ const StContainer = styled.div`
         grid-column-end: 6;
         grid-row-start: 1;
         grid-row-end: 2;
-        background-color: white;
     }
     :nth-child(2) {
         grid-column-start: 1;

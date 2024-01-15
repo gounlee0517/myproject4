@@ -24,6 +24,15 @@ function Slide() {
                 >
                     <StSlide>
                         <img src='img/vitamin.avif' alt='vitamin' />
+                        <StInfo>
+                            <h4>활력 에너지 충전</h4>
+                            <h2>비타민 & 미네랄</h2>
+                            <h4>
+                                당신의 건강한 몸을 위한 <br />
+                                모든 비타민과 미네랄이 여기 한 자리에!
+                            </h4>
+                            <button>MORE VIEW</button>
+                        </StInfo>
                     </StSlide>
                     <StSlide>
                         <img src='img/family.avif' alt='family' />
@@ -92,6 +101,9 @@ const StButton = styled.button`
     &:hover {
         font-weight: bold;
     }
+`;
+const StInfo = styled.div`
+    z-index: 10;
 `;
 
 export default Slide;
