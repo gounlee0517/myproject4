@@ -6,10 +6,11 @@ function Navbar2() {
     return (
         <div>
             <StNav>
+                <StMenu>
+                    <AiOutlineMenu />
+                </StMenu>
+
                 <StUl>
-                    <li>
-                        <AiOutlineMenu />
-                    </li>
                     <li>온 가족 건강</li>
                     <li>비타민</li>
                     <li>아미노산</li>
@@ -17,26 +18,31 @@ function Navbar2() {
                     <li>운동</li>
                     <li>이벤트</li>
                 </StUl>
+                <div></div>
             </StNav>
         </div>
     );
 }
+
 const StNav = styled.nav`
-    width: 100%;
-    padding: 13px;
-    position: sticky;
     justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    padding: 17px;
     font-size: 13px;
     color: #6a6a6a;
-    background-color: white;
-    opacity: 0.95;
 
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
 `;
 const StUl = styled.ul`
     display: flex;
-    padding: 5px;
+`;
+const StMenu = styled.div`
+    border-left: 1px solid #f4f4f4;
+    border-right: 1px solid #f4f4f4;
 `;
 
 export default Navbar2;

@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Items() {
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
-    const { id } = useParams();
 
-    // const getPosts = () => {
-
-    // };
     useEffect(() => {
         axios.get(`http://localhost:3001/items`).then((res) => {
             setPosts(res.data);
@@ -27,9 +23,9 @@ function Items() {
                             key={post.id}
                             onClick={() => navigate(`/detail/${post.id}`)}
                         >
-                            <img alt='items' />
-                            <h3>{post.name}</h3>
-                            <p>{post.price}</p>
+                            <StImg src={post.url} alt='items' />
+                            <StItemName>{post.name}</StItemName>
+                            <StItemPrice>{post.price}</StItemPrice>
                         </div>
                     );
                 })}
@@ -39,19 +35,34 @@ function Items() {
 }
 
 const StH2 = styled.h2`
-    width: 90%;
+    width: 80%;
     margin: 10vh auto;
     text-align: center;
 
     font-size: 25px;
 `;
 const StContainer = styled.div`
-    width: 90%;
-    margin: 0 auto;
+    width: 85%;
+    margin: 0 auto 100px auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(250px, auto);
-    gap: 20px;
+    grid-auto-rows: minmax(auto, 400px);
+    gap: 10px;
+`;
+const StImg = styled.img`
+    width: 20vw;
+    height: 35vh;
+    border: 1px solid #eeeeee;
+`;
+const StItemName = styled.h3`
+    width: 20vw;
+    border-bottom: 1px solid #eeeeee;
+    padding-top: 7px;
+    padding-bottom: 7px;
+`;
+const StItemPrice = styled.p`
+    padding-top: 7px;
+    padding-bottom: 50px;
 `;
 
 export default Items;

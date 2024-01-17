@@ -19,7 +19,7 @@ function DetailPage() {
     return (
         <div>
             <div>
-                <img alt='item' />
+                <StDetailImg src={posts.url} alt='item' />
                 <div>
                     <h2>{posts.name}</h2>
                     <p>{posts.price}</p>
@@ -33,5 +33,9 @@ function DetailPage() {
         </div>
     );
 }
+
+const StDetailImg = styled.img`
+    width: 650px;
+`;
 
 export default DetailPage;

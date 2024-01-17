@@ -6,6 +6,7 @@ import SignupPage from '../pages/SignupPage';
 import ReviewPage from '../pages/ReviewPage';
 import DetailPage from '../pages/DetailPage';
 import Layout from '../components/Layout';
+import Write from '../pages/Write';
 
 function Router() {
     return (
@@ -15,7 +16,8 @@ function Router() {
                     <Route path='/' element={<HomePage />} />
                     <Route path='/signin' element={<SigninPage />} />
                     <Route path='/signup' element={<SignupPage />} />
-                    <Route path='/review/:id' element={<ReviewPage />} />
+                    <Route path='/review' element={<ReviewPage />} />
+                    <Route path='/write' element={<Write />} />
                     <Route path='/detail/:id' element={<DetailPage />} />
                 </Route>
             </Routes>

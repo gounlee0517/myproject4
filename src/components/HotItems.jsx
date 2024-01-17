@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function HotItems() {
     const [posts, setPosts] = useState([]);
-    const navigate = useNavigate();
 
     const getPosts = () => {
         axios.get('http://localhost:3001/hotItems').then((res) => {
@@ -20,14 +18,15 @@ function HotItems() {
         <>
             <StContainer>
                 <div>
-                    <h2>WEEKLY HOTITEMS</h2>
+                    <StH2>
+                        <span style={{ fontWeight: '500' }}>WEEKLY</span> HOT
+                        ITEMS
+                    </StH2>
                 </div>
                 {posts.map((post) => {
                     return (
-                        <div
-                            key={post.id}
-                            onClick={() => navigate('/detail/:id')}
-                        >
+                        <div key={post.id}>
+                            <StImg src={post.url} alt='img' />
                             <h3>{post.name}</h3>
                             <p>{post.detail}</p>
                         </div>
@@ -39,12 +38,12 @@ function HotItems() {
 }
 
 const StContainer = styled.div`
-    width: 90%;
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(4, 100px);
     gap: 20px;
-    margin: 30px auto;
+    margin: 50px auto;
     cursor: pointer;
 
     :nth-child(1) {
@@ -81,6 +80,14 @@ const StContainer = styled.div`
         grid-row-end: 5;
         background-color: #e0f3fa;
     }
+`;
+const StH2 = styled.h2`
+    font-size: 32px;
+    font-weight: lighter;
+    padding-top: 40px;
+`;
+const StImg = styled.img`
+    width: 100px;
 `;
 
 export default HotItems;
