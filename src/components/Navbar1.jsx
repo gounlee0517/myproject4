@@ -1,18 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaRegStar } from 'react-icons/fa';
+import { FaRegStar, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { MdBookmarkBorder } from 'react-icons/md';
-import { FaFacebookF } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/modules/authSlice';
 
 function Navbar1() {
     const navigate = useNavigate();
-    const logOut = async (e) => {
-        e.preventDefault();
-        await signOut(auth);
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state) => state);
+    console.log(isLogin);
+
+    const onLogoutClick = () => {
+        auth.signOut();
+        dispatch(login(false));
+        navigate('/');
     };
 
     return (
@@ -36,9 +41,28 @@ function Navbar1() {
                     </li>
                 </StUl>
                 <StUl>
-                    <li onClick={() => navigate('/signin')}>로그인</li>|
-                    <li onClick={() => navigate('/signup')}>회원가입</li>|
-                    <li>장바구니</li>|<li>관심상품</li>
+                    {isLogin.authSlice.isLoggedIn ? (
+                        <>
+                            <li
+                                onClick={() => {
+                                    onLogoutClick();
+                                }}
+                            >
+                                로그아웃
+                            </li>
+                            |
+                        </>
+                    ) : (
+                        <>
+                            <li onClick={() => navigate('/signin')}>로그인</li>|
+                            <li onClick={() => navigate('/signup')}>
+                                회원가입
+                            </li>
+                            |
+                        </>
+                    )}
+                    <li onClick={() => navigate('/cart')}>장바구니</li>|
+                    <li>관심상품</li>
                     <StInput />
                 </StUl>
             </StNav>
@@ -65,6 +89,7 @@ const StNav = styled.nav`
 const StUl = styled.ul`
     display: flex;
     padding: 5px;
+    justify-content: center;
 `;
 
 const StInput = styled.input`

@@ -11,12 +11,12 @@ function Navbar2() {
                 </StMenu>
 
                 <StUl>
-                    <li>온 가족 건강</li>
-                    <li>비타민</li>
-                    <li>아미노산</li>
-                    <li>프로틴</li>
-                    <li>운동</li>
-                    <li>이벤트</li>
+                    <StLi>온 가족 건강</StLi>
+                    <StLi>비타민</StLi>
+                    <StLi>아미노산</StLi>
+                    <StLi>프로틴</StLi>
+                    <StLi>운동</StLi>
+                    <StLi>이벤트</StLi>
                 </StUl>
                 <div></div>
             </StNav>
@@ -43,6 +43,13 @@ const StUl = styled.ul`
 const StMenu = styled.div`
     border-left: 1px solid #f4f4f4;
     border-right: 1px solid #f4f4f4;
+`;
+const StLi = styled.li`
+    transition: all 0.5s;
+
+    &:hover {
+        font-weight: 900;
+    }
 `;
 
 export default Navbar2;

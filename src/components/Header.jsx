@@ -23,7 +23,8 @@ function Header() {
 }
 
 const StDiv = styled.div`
-    padding: 90px;
+    padding: 80px;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
 `;

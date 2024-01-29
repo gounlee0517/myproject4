@@ -7,13 +7,10 @@ const isLoggedInSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            return { ...state, isLoggedIn: true };
-        },
-        logout: (state, action) => {
-            return { ...state, isLoggedIn: false };
+            return { isLoggedIn: action.payload };
         },
     },
 });
 
 export default isLoggedInSlice.reducer;
-export const { login, logout } = isLoggedInSlice.actions;
+export const { login } = isLoggedInSlice.actions;

@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+const CARD_BACKGROUND_COLOR = {
+    0: '#fbe9e9',
+    1: '#fff3d5',
+    2: '#d9d9f1',
+    3: '#e0f3fa',
+};
+
 function HotItems() {
     const [posts, setPosts] = useState([]);
 
@@ -19,23 +26,31 @@ function HotItems() {
             <StContainer>
                 <div>
                     <StH2>
-                        <span style={{ fontWeight: '500' }}>WEEKLY</span> HOT
+                        <span style={{ fontWeight: '300' }}>WEEKLY</span> HOT
                         ITEMS
                     </StH2>
                 </div>
-                {posts.map((post) => {
+                {posts.map((post, index) => {
                     return (
-                        <div key={post.id}>
+                        <PostContainer
+                            key={post.id}
+                            bgColor={CARD_BACKGROUND_COLOR[index]}
+                        >
                             <StImg src={post.url} alt='img' />
-                            <h3>{post.name}</h3>
-                            <p>{post.detail}</p>
-                        </div>
+                            <StH3>{post.name}</StH3>
+                            <StP>{post.detail}</StP>
+                        </PostContainer>
                     );
                 })}
             </StContainer>
         </>
     );
 }
+
+const PostContainer = styled.div`
+    background-color: ${({ bgColor }) => bgColor};
+    text-align: center;
+`;
 
 const StContainer = styled.div`
     width: 80%;
@@ -57,28 +72,24 @@ const StContainer = styled.div`
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
-        background-color: #fbe9e9;
     }
     :nth-child(3) {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 2;
         grid-row-end: 4;
-        background-color: #fff3d5;
     }
     :nth-child(4) {
         grid-column-start: 1;
         grid-column-end: 6;
         grid-row-start: 4;
         grid-row-end: 5;
-        background-color: #d9d9f1;
     }
     :nth-child(5) {
         grid-column-start: 6;
         grid-column-end: 9;
         grid-row-start: 1;
         grid-row-end: 5;
-        background-color: #e0f3fa;
     }
 `;
 const StH2 = styled.h2`
@@ -88,6 +99,12 @@ const StH2 = styled.h2`
 `;
 const StImg = styled.img`
     width: 100px;
+`;
+const StH3 = styled.h3`
+    background-color: none;
+`;
+const StP = styled.p`
+    background-color: none;
 `;
 
 export default HotItems;

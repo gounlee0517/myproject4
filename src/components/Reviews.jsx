@@ -44,6 +44,8 @@ const StReviewDiv = styled.div`
     background-color: #f8f8f8;
     color: #333333;
     padding-bottom: 100px;
+
+    border-bottom: 1px solid #727272;
 `;
 const StReviewSectionTitle = styled.div`
     width: 90%;

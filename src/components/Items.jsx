@@ -56,6 +56,7 @@ const StImg = styled.img`
 `;
 const StItemName = styled.h3`
     width: 20vw;
+    font-weight: 650;
     border-bottom: 1px solid #eeeeee;
     padding-top: 7px;
     padding-bottom: 7px;

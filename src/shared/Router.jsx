@@ -7,6 +7,7 @@ import ReviewPage from '../pages/ReviewPage';
 import DetailPage from '../pages/DetailPage';
 import Layout from '../components/Layout';
 import Write from '../pages/Write';
+import Cart from '../pages/Cart';
 
 function Router() {
     return (
@@ -19,6 +20,7 @@ function Router() {
                     <Route path='/review' element={<ReviewPage />} />
                     <Route path='/write' element={<Write />} />
                     <Route path='/detail/:id' element={<DetailPage />} />
+                    <Route path='/cart' element={<Cart />} />
                 </Route>
             </Routes>
         </BrowserRouter>
