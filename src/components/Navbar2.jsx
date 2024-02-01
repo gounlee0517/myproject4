@@ -25,6 +25,7 @@ function Navbar2() {
 }
 
 const StNav = styled.nav`
+    position: relative;
     justify-content: space-between;
     display: flex;
     align-items: center;

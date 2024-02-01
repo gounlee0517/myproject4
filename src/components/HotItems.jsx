@@ -8,6 +8,12 @@ const CARD_BACKGROUND_COLOR = {
     2: '#d9d9f1',
     3: '#e0f3fa',
 };
+const CARD_IMG_SRC = {
+    0: 'img/rosehips.png',
+    1: 'img/vitaminC.png',
+    2: 'img/resveratrol.png',
+    3: 'img/taurine.png',
+};
 
 function HotItems() {
     const [posts, setPosts] = useState([]);
@@ -36,9 +42,9 @@ function HotItems() {
                             key={post.id}
                             bgColor={CARD_BACKGROUND_COLOR[index]}
                         >
-                            <StImg src={post.url} alt='img' />
                             <StH3>{post.name}</StH3>
                             <StP>{post.detail}</StP>
+                            <StImg src={CARD_IMG_SRC[index]} alt='img' />
                         </PostContainer>
                     );
                 })}
@@ -83,13 +89,13 @@ const StContainer = styled.div`
         grid-column-start: 1;
         grid-column-end: 6;
         grid-row-start: 4;
-        grid-row-end: 5;
+        grid-row-end: 6;
     }
     :nth-child(5) {
         grid-column-start: 6;
         grid-column-end: 9;
         grid-row-start: 1;
-        grid-row-end: 5;
+        grid-row-end: 6;
     }
 `;
 const StH2 = styled.h2`

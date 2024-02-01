@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaRegStar, FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { MdBookmarkBorder } from 'react-icons/md';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +12,13 @@ function Navbar1() {
     const isLogin = useSelector((state) => state);
     console.log(isLogin);
 
+    useEffect(() => {
+        window.addEventListener('scroll', scrollEvent);
+        return () => window.removeEventListener('scroll', scrollEvent);
+    }, []);
+
+    const scrollEvent = () => {};
+
     const onLogoutClick = () => {
         auth.signOut();
         dispatch(login(false));
@@ -24,21 +29,8 @@ function Navbar1() {
         <div>
             <StNav>
                 <StUl>
-                    <li>
-                        <FaRegStar />
-                        즐겨찾기
-                    </li>
-                    |
-                    <li>
-                        <MdBookmarkBorder />
-                        바로가기
-                    </li>
-                    <li>
-                        <FaFacebookF />
-                    </li>
-                    <li>
-                        <FaInstagram />
-                    </li>
+                    <li>☆ 즐겨찾기</li>|<li>➲ 바로가기</li>|<li>facebook</li>
+                    <li>instagram</li>
                 </StUl>
                 <StUl>
                     {isLogin.authSlice.isLoggedIn ? (
@@ -84,11 +76,13 @@ const StNav = styled.nav`
     opacity: 0.95;
 
     border-bottom: 1px solid #f4f4f4;
+    box-shadow: 0 4px 4px -4px gray;
 `;
 
 const StUl = styled.ul`
     display: flex;
     padding: 5px;
+    padding-top: 12px;
     justify-content: center;
 `;
 
@@ -97,6 +91,7 @@ const StInput = styled.input`
     background-color: #e8e8e8;
     border-radius: 5px;
     padding: 5px 1px;
+    transform: translateY(-4px);
 `;
 
 export default Navbar1;

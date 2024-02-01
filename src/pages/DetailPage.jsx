@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { insertItem } from '../redux/modules/cartSlice';
+import { addCart } from '../redux/modules/cartSlice';
 
 function DetailPage() {
     const [posts, setPosts] = useState([]);
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    // const getPosts = () => {
-
-    // };
     useEffect(() => {
         axios.get(`http://localhost:3001/items/${id}`).then((res) => {
             setPosts(res.data);
         });
     }, [id]);
+
+    const addCartHandler = () => {
+        dispatch(addCart(posts));
+        navigate('/cart');
+    };
 
     return (
         <div>
@@ -45,7 +48,10 @@ function DetailPage() {
                         >
                             바로 구매하기
                         </StBtn>
-                        <StBtn name={'장바구니'} onClick={() => {}}>
+                        <StBtn
+                            name={'장바구니'}
+                            onClick={() => addCartHandler(id)}
+                        >
                             장바구니 담기
                         </StBtn>
                         <StBtn>관심상품 등록</StBtn>

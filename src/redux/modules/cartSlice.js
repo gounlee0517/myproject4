@@ -1,48 +1,55 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
-    name: 'cart',
-    initialState: { item: [], totalQuantity: 0, cartChange: false },
+    name: 'cartSlice',
+    initialState: [
+        {
+            id: 1,
+            name: 'vitamin',
+            count: 1,
+        },
+        {
+            id: 2,
+            name: 'mineral',
+            count: 1,
+        },
+    ],
     reducers: {
-        addCartItem: (state, action) => {
+        addCount(state, action) {
+            let num = state.findIndex((item) => item.id === action.payload);
+            state[num].count++;
+        },
+        minusCount(state, action) {
+            let num = state.findIndex((item) => item.id === action.payload);
+            if (state[num].count > 1) {
+                state[num].count--;
+            }
+        },
+        addCart(state, action) {
             const newItem = action.payload;
-            const existingItem = state.item.find(
+            const existingItemIndex = state.findIndex(
                 (item) => item.id === newItem.id,
             );
-            if (!existingItem) {
-                state.item.push({
-                    id: newItem.id,
-                    title: newItem.title,
+
+            if (existingItemIndex === -1) {
+                state.push({
+                    url: newItem.url,
+                    name: newItem.name,
+                    count: 1,
                     price: newItem.price,
-                    description: newItem.description,
-                    totalPrice: newItem.price,
-                    quantity: 1,
                 });
             } else {
-                existingItem.totalPrice =
-                    existingItem.totalPrice + existingItem.price;
-                existingItem.quantity++;
+                state[existingItemIndex] = {
+                    ...state[existingItemIndex],
+                    count: state[existingItemIndex].count + 1,
+                };
             }
-            state.totalQuantity++;
-            state.cartChange = true;
         },
-
-        removeCartItem: (state, action) => {
-            const currentItem = action.payload;
-            const targetItem = state.item.find(
-                (item) => item.id === currentItem.id,
-            );
-            if (targetItem.quantity === 1) {
-                targetItem.quantity--;
-                state.item = state.item.filter((item) => item.quantity !== 0);
-            }
-            state.totalQuantity--;
-            targetItem.quantity--;
-            targetItem.totalPrice -= targetItem.price;
-            state.cartChange = true;
+        deleteCart(state, action) {
+            return state.filter((item) => item.id !== action.payload);
         },
     },
 });
 
-export const { cartAction } = cartSlice.actions;
+export const { addCount, minusCount, addCart, deleteCart } = cartSlice.actions;
 export default cartSlice;
